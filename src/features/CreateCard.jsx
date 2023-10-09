@@ -28,6 +28,16 @@ export const CreateCard = () => {
     
     const [inputValues, setInputValues] = useState({});
     const [errors, setErrors] = useState({});
+    const [buttonText, setButtonText] = useState("Add card");
+    const [isCardFlipped, setIsCardFlipped] = useState(false);
+
+    const handleCardHover = () => {
+        setIsCardFlipped(true);
+    }
+
+    const handleCardLeave = () => {
+        setIsCardFlipped(false);
+    }
 
     const currentDate = new Date();
     const months = Array.from({length:12}, (_,index) => {
@@ -105,6 +115,11 @@ export const CreateCard = () => {
 
         if (Object.keys(newErrors).length === 0) {
 
+            setButtonText("Success! New card has been created.")
+            setTimeout(() => {
+                setButtonText("Add card")
+            }, 2000);
+
             const newCardId = nextCardId;
             dispatch(incrementCardId());
 
@@ -131,61 +146,87 @@ export const CreateCard = () => {
 
 
     return (
-        <div>
         <div className={styles.container}>
-        <div className={styles.card}>
-        <p className={styles.vendor}>{vendor || ""} </p>
-        <p className={styles.cardnumber}>{cardNumber ? cardNumber : '____-____-____-____'}</p>
-        <div className={styles.cardholder}>
-        <p>CARDHOLDER</p>
-        <p>{firstName} {lastName} </p>
-        </div>
-        
-        <div className={styles.expiry}>
-        <p>MONTH/YEAR</p>
-        <p>{expireMonth || ""} / {expireYear || ""} </p>
-        </div>
-        <p className={styles.ccv}>ccv: {ccv || ""} </p>
-        </div>
-        </div>
-        
+        <h3>Preview of your new card</h3>
+        {!isCardFlipped ? (
+            <div className={styles.card}
+            onMouseEnter={handleCardHover}
+            onMouseLeave={handleCardLeave}
+            >
+            <p className={styles.vendor}>{vendor || ""} </p>
+            <p className={styles.cardnumber}>{cardNumber ? cardNumber : '____-____-____-____'}</p>
+            <div className={styles.cardholder}>
+                <p>CARDHOLDER</p>
+                <p>{firstName} {lastName} </p>
+            </div>
+            <div className={styles.expiry}>
+                <p>MONTH/YEAR</p>
+                <p>{expireMonth || ""} / {expireYear || ""} </p>
+            </div>
+            </div>
+        ) : ""}
+        {isCardFlipped? (
+            <div className={styles.backContent}
+            onMouseEnter={handleCardHover}
+            onMouseLeave={handleCardLeave}
+            >
+                <div className={styles.cardholderBack}>
+                <p>{firstName} {lastName} </p>
+            </div>
+            <div className={styles.ccv}>
+                <p>ccv:</p>
+                <p>{ccv || ""} </p> 
+            </div>
+            </div>
+        ) : ""}
+                    
 
-        <h3>Lägg till ett nytt kort</h3>
         {cards.length === 4 ? (
             <p>Note: you cannot have more than 4 cards, 
                 delete a card to be able to create a new
             </p>
         ) : null}
+
+        <div className={styles.form}>
+        <h3 className={styles.fh3}>Add a new card</h3>
+        <p className={styles.fp}>Max amount of cards is 4</p>
         <input type="text" id="firstName" value={firstName} placeholder="Förnamn" readOnly />
         <input type="text" id="lastName" value={lastName} placeholder="Efternamn" readOnly />
+        <label htmlFor="vendor">Vendor</label>
         <select name="" id="vendor" onChange={handleInputChange}>
             <option value="" hidden>Choose vendor</option>
             <option value="American Express">American Express</option>
-            <option value="Visa">VISA</option>
+            <option value="VISA">VISA</option>
             <option value="MasterCard">Mastercard</option>
         </select>
-        <p>{errors.vendor}</p>
+        <p className={styles.error}>{errors.vendor}</p>
+        <label htmlFor="cardNumber">Cardnumber</label>
         <input type="text" id="cardNumber" maxLength="16" onChange={handleInputChange} placeholder="Kortnummer" />
-        <p>{errors.cardNumber}</p>
+        <p className={styles.error}>{errors.cardNumber}</p>
+        <label htmlFor="expireMonth">Month</label>
         <select name="" id="expireMonth" onChange={handleInputChange}>
             <option value="" hidden>MM</option>
             {months.map((option, i) => (
             <option key={i} value={+option.value}>{option.value}</option>
             ))}
         </select>
-        <p>{errors.expireMonth}</p>
+        <p className={styles.error}>{errors.expireMonth}</p>
+        <label htmlFor="expireYear">Year</label>
         <select name="" id="expireYear" onChange={handleInputChange}>
             <option value="" hidden>YY</option>
             {years.map((option, i) => (
             <option key={i} value={+option.value}>{option.value}</option>
             ))}
         </select>
-        <p>{errors.expireYear}</p>
-        <input type="text" id="ccv" maxLength="3" onChange={handleInputChange} placeholder="ccv" />
-        <p>{errors.ccv}</p>
+        <p className={styles.error}>{errors.expireYear}</p>
+        <label htmlFor="ccv">ccv</label>
+        <input type="text" id="ccv" maxLength="3" onChange={handleInputChange} onMouseEnter={handleCardHover}
+            onMouseLeave={handleCardLeave} placeholder="ccv" />
+        <p className={styles.error}>{errors.ccv}</p>
         {cards.length < 4 ? (
-            <button onClick={validateInputs}>Add card</button>
+            <button className={styles.addBtn} onClick={validateInputs}>{buttonText}</button>
         ) : null }
+        </div>
         </div>
     )
 }

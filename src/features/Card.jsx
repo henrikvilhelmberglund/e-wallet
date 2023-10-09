@@ -31,13 +31,12 @@ export const Card = (props) => {
               <p>MONTH/YEAR</p>
               <p>{expireMonth}/{expireYear}</p>
             </div>
-            <p className={styles.ccv}>ccv: {ccv}</p>
           </div>
           </div>
         ) : (
           <div className={styles.container}>
             <button className={styles.card} onClick={handleActiveCard}>
-            <div>
+            <div className={styles.card}>
             <p className={styles.vendor}>{vendor}</p>
             <p className={styles.cardnumber}>{cardNumber}</p>
             <div className={styles.cardholder}>
@@ -48,7 +47,6 @@ export const Card = (props) => {
               <p>MONTH/YEAR</p>
               <p>{expireMonth}/{expireYear}</p>
             </div>
-            <p className={styles.ccv}>ccv: {ccv}</p>
             </div>
             </button>
           </div>
