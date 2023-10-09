@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { activeCard, deleteCard } from "./cardSlice";
-import styles from '../features/createcard.module.css';
+import styles from './CreateCard.module.css';
 
 
 export const Card = (props) => {
