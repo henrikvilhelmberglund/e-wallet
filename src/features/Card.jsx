@@ -20,7 +20,8 @@ export const Card = (props) => {
     let logo;
 
     if(vendor === "VISA") {
-      logo = "./src/assets/images/visalogo.png";
+      logo = "/assets/images/visalogo.png";
+      
     } else if (vendor === "MasterCard") {
       logo = "./src/assets/images/mastercardlogo.png";
 
@@ -51,7 +52,6 @@ export const Card = (props) => {
           <div className={styles.container}>
             <button className={styles.card} onClick={handleActiveCard}>
             <div className={styles.card}>
-            {/* <p className={styles.vendor}>{vendor}</p> */}
             <img className={styles.vendor} src={logo} alt="Visa Logo" />
             <p className={styles.cardnumber}>{cardNumber}</p>
             <div className={styles.cardholder}>
