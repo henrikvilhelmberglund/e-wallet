@@ -5,7 +5,7 @@ import styles from './CreateCard.module.css';
 
 export const Card = (props) => {
     const dispatch = useDispatch();
-    const {active, cardNumber, cardholder, ccv, expireMonth, expireYear, vendor, id} = props
+    const {active, cardNumber, cardholder, expireMonth, expireYear, vendor, id} = props
 
 
     const handleActiveCard = () => {
@@ -15,13 +15,27 @@ export const Card = (props) => {
     const handleDeleteCard = () => {
         dispatch(deleteCard(id))
     }
+
+
+    let logo;
+
+    if(vendor === "VISA") {
+      logo = "./src/assets/images/visalogo.png";
+    } else if (vendor === "MasterCard") {
+      logo = "./src/assets/images/mastercardlogo.png";
+
+    } else if (vendor === "American Express") {
+      logo = "./src/assets/images/Americanexpresslogo.png";
+    }
+  
     
     return (
       <div className={styles.container}>
         {active ? (
           <div>
             <div className={styles.card}>
-            <p className={styles.vendor}>{vendor}</p>
+            <img className={styles.vendor} src={logo} alt="Visa Logo" />
+
             <p className={styles.cardnumber}>{cardNumber}</p>
             <div className={styles.cardholder}>
               <p>CARDHOLDER</p>
@@ -37,7 +51,8 @@ export const Card = (props) => {
           <div className={styles.container}>
             <button className={styles.card} onClick={handleActiveCard}>
             <div className={styles.card}>
-            <p className={styles.vendor}>{vendor}</p>
+            {/* <p className={styles.vendor}>{vendor}</p> */}
+            <img className={styles.vendor} src={logo} alt="Visa Logo" />
             <p className={styles.cardnumber}>{cardNumber}</p>
             <div className={styles.cardholder}>
               <p>CARDHOLDER</p>

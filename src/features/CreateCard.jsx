@@ -123,6 +123,7 @@ export const CreateCard = () => {
             const newCardId = nextCardId;
             dispatch(incrementCardId());
 
+
             let data = {
                 id: newCardId,
                 vendor: vendor,
@@ -144,6 +145,15 @@ export const CreateCard = () => {
         }
     }
 
+    let logo;
+
+    if(vendor === "VISA") {
+      logo = "./src/assets/images/visalogo.png";
+    } else if (vendor === "MasterCard") {
+      logo = "./src/assets/images/mastercardlogo.png";
+    } else if (vendor === "American Express") {
+      logo = "./src/assets/images/Americanexpresslogo.png";
+    }
 
     return (
         <div className={styles.container}>
@@ -153,7 +163,8 @@ export const CreateCard = () => {
             onMouseEnter={handleCardHover}
             onMouseLeave={handleCardLeave}
             >
-            <p className={styles.vendor}>{vendor || ""} </p>
+            {logo && <img className={styles.vendor} src={logo} alt={`${vendor} Logo`} />}
+
             <p className={styles.cardnumber}>{cardNumber ? cardNumber : '____-____-____-____'}</p>
             <div className={styles.cardholder}>
                 <p>CARDHOLDER</p>

@@ -20,8 +20,8 @@ const cardSlice = createSlice({
         cards: [
             {
                 cardholder: {
-                    firstName: "hej",
-                    lastName: "då",
+                    firstName: "firstname",
+                    lastName: "lastname",
                 },
                 vendor: "VISA",
                 cardNumber: "1234-1234-1234-1234",
