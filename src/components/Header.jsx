@@ -13,8 +13,8 @@ export const Header = () => {
       <header >
         <h1>E-wallet</h1>
         <ul>
-            <Link to='/e-wallet/cards' style={{ textDecoration: isCardsLinkActive ? "underline" : "none" }} >Cards</Link>
-            <Link to='/e-wallet/addcard' style={{ textDecoration: isAddCardLinkActive ? "underline" : "none" }}>Add card</Link>
+            <Link to='/cards' style={{ textDecoration: isCardsLinkActive ? "underline" : "none" }} >Cards</Link>
+            <Link to='/addcard' style={{ textDecoration: isAddCardLinkActive ? "underline" : "none" }}>Add card</Link>
         </ul>
       </header>
     );
