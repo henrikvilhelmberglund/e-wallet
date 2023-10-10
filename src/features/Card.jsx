@@ -1,6 +1,15 @@
 import { useDispatch } from "react-redux";
 import { activeCard, deleteCard } from "./cardSlice";
 import styles from './CreateCard.module.css';
+// import { visaLogo } from "../public/images/visaLogo.png";
+// import { americanExpressLogo } from "../public/images/AmericanExpresslogo.png";
+// import { mastercardLogo } from "../public/images/AmericanExpresslogo.png";
+
+import visaLogo from "/public/images/visaLogo.png";
+import americanExpressLogo from "/public/images/AmericanExpresslogo.png";
+import mastercardLogo from "/public/images/mastercardLogo.png";
+
+
 
 
 export const Card = (props) => {
@@ -20,13 +29,13 @@ export const Card = (props) => {
     let logo;
 
     if(vendor === "VISA") {
-      logo = "/assets/images/visalogo.png";
+      logo = visaLogo;
       
     } else if (vendor === "MasterCard") {
-      logo = "./src/assets/images/mastercardlogo.png";
+      logo = mastercardLogo;
 
     } else if (vendor === "American Express") {
-      logo = "./src/assets/images/Americanexpresslogo.png";
+      logo = americanExpressLogo;
     }
   
     

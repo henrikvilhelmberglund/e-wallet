@@ -4,6 +4,10 @@ import { useState} from "react";
 import { addCard, incrementCardId } from "./cardSlice";
 import styles from '../features/CreateCard.module.css';
 
+import visaLogo from "/public/images/visaLogo.png";
+import americanExpressLogo from "/public/images/AmericanExpresslogo.png";
+import mastercardLogo from "/public/images/mastercardLogo.png";
+
 const reset = () => {
     let ccvValue = document.querySelector("#ccv");
     let vendorValue = document.querySelector("#vendor");
@@ -148,12 +152,15 @@ export const CreateCard = () => {
     let logo;
 
     if(vendor === "VISA") {
-      logo = "./src/assets/images/visalogo.png";
+        logo = visaLogo;
+        
     } else if (vendor === "MasterCard") {
-      logo = "./src/assets/images/mastercardlogo.png";
+        logo = mastercardLogo;
+  
     } else if (vendor === "American Express") {
-      logo = "./src/assets/images/Americanexpresslogo.png";
+        logo = americanExpressLogo;
     }
+    
 
     return (
         <div className={styles.container}>
