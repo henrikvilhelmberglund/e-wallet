@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import { activeCard, deleteCard } from "./cardSlice";
 import styles from './CreateCard.module.css';
-import visaLogo from "/public/images/visaLogo.png";
-import americanExpressLogo from "/public/images/AmericanExpresslogo.png";
-import mastercardLogo from "/public/images/mastercardLogo.png";
+import visaLogo from "../assets/visalogo.png";
+import americanExpressLogo from "../assets/Americanexpresslogo.png";
+import mastercardLogo from "../assets/mastercardLogo.png";
 
 
 

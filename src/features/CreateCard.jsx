@@ -4,9 +4,9 @@ import { useState} from "react";
 import { addCard, incrementCardId } from "./cardSlice";
 import styles from '../features/CreateCard.module.css';
 
-import visaLogo from "/public/images/visaLogo.png";
-import americanExpressLogo from "/public/images/AmericanExpresslogo.png";
-import mastercardLogo from "/public/images/mastercardLogo.png";
+import visaLogo from "../assets/visalogo.png";
+import americanExpressLogo from "../assets/Americanexpresslogo.png";
+import mastercardLogo from "../assets/mastercardLogo.png";
 
 const reset = () => {
     let ccvValue = document.querySelector("#ccv");

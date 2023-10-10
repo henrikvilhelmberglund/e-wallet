@@ -12,12 +12,12 @@ import Addcard from "./routes/Addcard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/e-wallet' element={<Root />}>
+    <Route path='/' element={<Root />}>
       <Route index element={<Cards />} /> 
-      <Route path='/e-wallet/cards' element={<Cards />}/>
-      <Route path='/e-wallet/addcard' element={<Addcard />}/>
+      <Route path='/cards' element={<Cards />}/>
+      <Route path='/addcard' element={<Addcard />}/>
     </Route>
-  )
+  ), {basename: import.meta.env.DEV ? '/' : '/e-wallet/'}
 )
 
 function App() {
