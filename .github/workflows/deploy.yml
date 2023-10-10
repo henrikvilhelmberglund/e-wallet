@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - fix-base-path-in-workflow
+      - main
 
 jobs:
   build:
