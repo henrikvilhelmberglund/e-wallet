@@ -4,8 +4,8 @@ import { useState} from "react";
 import { addCard, incrementCardId } from "./cardSlice";
 import styles from '../features/CreateCard.module.css';
 
-import visaLogo from "../assets/visaLogo.png";
-import americanExpressLogo from "../assets/AmericanExpresslogo.png";
+import visaLogo from "../assets/visalogo.png";
+import americanExpressLogo from "../assets/Americanexpresslogo.png";
 import mastercardLogo from "../assets/mastercardLogo.png";
 
 const reset = () => {
